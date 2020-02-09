@@ -21,4 +21,4 @@ compileTestKotlin {
 }
 
 apply plugin: "application"
-mainClassName = "ktcoin.MainKt"
+mainClassName = "MainKt"

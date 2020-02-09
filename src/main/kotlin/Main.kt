@@ -1,16 +1,26 @@
-package ktcoin
+import ktcoin.*
 
 fun main(args: Array<String>) {
-    val genesisBlock = Block("0", "First")
-    val secondBlock = Block(genesisBlock.hash, "Second")
-    val thirdBlock = Block(secondBlock.hash, "Third")
+    val blockChain = BlockChain()
+    val wallet1 = Wallet.create(blockChain)
+    val wallet2 = Wallet.create(blockChain)
 
-    val blockchain = Blockchain()
+    println("Wallet 1 balance: ${wallet1.balance}")
+    println("Wallet 2 balance: ${wallet2.balance}")
 
-    println(blockchain.add(genesisBlock))
-    println(blockchain.isValid())
-    println(blockchain.add(secondBlock))
-    println(blockchain.isValid())
-    println(blockchain.add(thirdBlock))
-    println(blockchain.isValid())
+    val tx1 = wallet2.sendFundsTo(recipient = wallet2.publicKey, amountToSend = 50)
+    tx1.outputs.add(TransactionOutput(recipient = wallet1.publicKey, amount = 50, transactionHash = tx1.hash))
+
+    var genesisBlock = Block(previousHash = "0")
+    genesisBlock.addTransaction(tx1)
+    genesisBlock = blockChain.add(genesisBlock)
+
+    println("Wallet 1 balance: ${wallet1.balance}")
+    println("Wallet 2 balance: ${wallet2.balance}")
+
+    val tx2 = wallet1.sendFundsTo(recipient = wallet2.publicKey, amountToSend = 50)
+    val secondBlock = blockChain.add(Block(genesisBlock.hash).addTransaction(tx2))
+
+    println("Wallet 1 balance: ${wallet1.balance}")
+    println("Wallet 2 balance: ${wallet2.balance}")
 }
