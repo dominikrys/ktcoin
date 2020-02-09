@@ -6,14 +6,15 @@ data class Block(
     val previousHash: String,
     val data: String,
     val timestamp: Long = Instant.now().toEpochMilli(),
+    val nonce: Long = 0,
     var hash: String = ""
 ) {
     init {
         hash = calculateHash()
     }
 
-    private fun calculateHash(): String {
-        return "$previousHash$data$timestamp".hash()
+    fun calculateHash(): String {
+        return "$previousHash$data$timestamp$nonce".hash()
         // TODO: add more fields
     }
 }
