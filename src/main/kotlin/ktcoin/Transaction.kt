@@ -26,19 +26,15 @@ data class Transaction(
     val inputs: MutableList<TransactionOutput> = mutableListOf(),
     val outputs: MutableList<TransactionOutput> = mutableListOf()
 ) {
+
     private var signature: ByteArray = ByteArray(0)
 
     init {
         hash = "${sender.encodeToString()}${recipient.encodeToString()}$amount$salt".hash()
     }
 
-    //TODO: remove this? not necessary?
     companion object {
-        fun create(sender: PublicKey, recipient: PublicKey, amount: Int): Transaction {
-            return Transaction(sender, recipient, amount)
-        }
-
-        // TODO: why is this in a companion object?
+        // Store the salt in a companion object so it will get incremented every time its value is read.
         var salt: Long = 0
             get() {
                 field += 1

@@ -1,0 +1,3 @@
+# KtCoin
+
+Blockchain in Kotlin.
