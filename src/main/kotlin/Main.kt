@@ -8,8 +8,8 @@ fun main(args: Array<String>) {
     println("Wallet 1 balance: ${wallet1.balance}")
     println("Wallet 2 balance: ${wallet2.balance}")
 
-    val tx1 = wallet2.sendFundsTo(recipient = wallet2.publicKey, amountToSend = 50)
-    tx1.outputs.add(TransactionOutput(recipient = wallet1.publicKey, amount = 50, transactionHash = tx1.hash))
+    val tx1 = Transaction.create(sender = wallet1.publicKey, recipient = wallet1.publicKey, amount = 100)
+    tx1.outputs.add(TransactionOutput(recipient = wallet1.publicKey, amount = 100, transactionHash = tx1.hash))
 
     var genesisBlock = Block(previousHash = "0")
     genesisBlock.addTransaction(tx1)

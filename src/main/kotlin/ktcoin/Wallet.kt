@@ -6,6 +6,7 @@ import java.security.PublicKey
 
 data class Wallet(val publicKey: PublicKey, val privateKey: PrivateKey, val blockChain: BlockChain) {
 
+    // Factory for creating Wallets
     companion object {
         fun create(blockChain: BlockChain): Wallet {
             val generator = KeyPairGenerator.getInstance("RSA")
@@ -27,7 +28,7 @@ data class Wallet(val publicKey: PublicKey, val privateKey: PrivateKey, val bloc
 
     fun sendFundsTo(recipient: PublicKey, amountToSend: Int): Transaction {
         if (amountToSend > balance) {
-            // TODO: have this return a result instead
+            // TODO: have this not throw?
             throw IllegalArgumentException("Insufficient funds")
         }
 
@@ -42,9 +43,8 @@ data class Wallet(val publicKey: PublicKey, val privateKey: PrivateKey, val bloc
             if (collectedAmount > amountToSend) {
                 val change = collectedAmount - amountToSend
                 tx.outputs.add(TransactionOutput(recipient = publicKey, amount = change, transactionHash = tx.hash))
-            }
-
-            if (collectedAmount >= amountToSend) {
+                break
+            } else if (collectedAmount == amountToSend) {
                 break
             }
         }

@@ -32,11 +32,13 @@ data class Transaction(
         hash = "${sender.encodeToString()}${recipient.encodeToString()}$amount$salt".hash()
     }
 
+    //TODO: remove this? not necessary?
     companion object {
         fun create(sender: PublicKey, recipient: PublicKey, amount: Int): Transaction {
             return Transaction(sender, recipient, amount)
         }
 
+        // TODO: why is this in a companion object?
         var salt: Long = 0
             get() {
                 field += 1

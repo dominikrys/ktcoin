@@ -19,7 +19,7 @@ data class Block(
     }
 
     fun addTransaction(transaction: Transaction): Block {
-        if(transaction.isSignatureValid()) {
+        if (transaction.isSignatureValid()) {
             transactions.add(transaction)
         }
         return this

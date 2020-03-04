@@ -17,7 +17,7 @@ fun String.sign(privateKey: PrivateKey, algorithm: String = "SHA256withRSA"): By
     return rsa.sign()
 }
 
-fun String.verifySignature(publicKey: PublicKey, signature: ByteArray, algorithm: String = "SHA256withRSA") : Boolean {
+fun String.verifySignature(publicKey: PublicKey, signature: ByteArray, algorithm: String = "SHA256withRSA"): Boolean {
     val rsa = Signature.getInstance(algorithm)
     rsa.initVerify(publicKey)
     rsa.update(this.toByteArray())
