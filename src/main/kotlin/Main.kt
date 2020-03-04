@@ -9,6 +9,7 @@ fun main(args: Array<String>) {
     println("Wallet 2 balance: ${wallet2.balance}")
 
     val tx1 = Transaction.create(sender = wallet1.publicKey, recipient = wallet1.publicKey, amount = 100)
+    tx1.sign(wallet1.privateKey)
     tx1.outputs.add(TransactionOutput(recipient = wallet1.publicKey, amount = 100, transactionHash = tx1.hash))
 
     var genesisBlock = Block(previousHash = "0")
