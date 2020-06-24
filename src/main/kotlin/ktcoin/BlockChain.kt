@@ -1,7 +1,6 @@
 package ktcoin
 
 class BlockChain {
-
     private var blocks: MutableList<Block> = mutableListOf()
     private val difficulty = 2
     private val validPrefix = "0".repeat(difficulty)
@@ -13,14 +12,13 @@ class BlockChain {
         return minedBlock
     }
 
-    private fun isMined(block: Block): Boolean {
-        return block.hash.startsWith(validPrefix)
-    }
+    private fun isMined(block: Block): Boolean = block.hash.startsWith(validPrefix)
 
     private fun mine(block: Block): Block {
         println("Mining: $block")
 
         var minedBlock = block.copy()
+
         while (!isMined(minedBlock)) {
             minedBlock = minedBlock.copy(nonce = minedBlock.nonce + 1)
         }
@@ -43,7 +41,7 @@ class BlockChain {
                     when {
                         currentBlock.hash != currentBlock.calculateHash() -> return false
                         currentBlock.previousHash != previousBlock.calculateHash() -> return false
-                        !(isMined(previousBlock) && isMined(currentBlock)) -> return false
+                        !isMined(previousBlock) || !isMined(currentBlock) -> return false
                     }
                 }
                 return true
