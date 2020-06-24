@@ -19,7 +19,7 @@ data class Transaction(
 
     companion object {
         var salt: Long = 0
-            get() = ++field
+            get() = field++
     }
 
     fun sign(privateKey: PrivateKey): Transaction {
