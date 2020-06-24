@@ -11,9 +11,17 @@
 build/
 .gradletasknamecache
 **/build/
+.idea/**/gradle.xml
+.idea/**/libraries
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Cache of project
+.gradletasknamecache
 
 ### Intellij ###
 .idea/**/workspace.xml
@@ -21,6 +29,7 @@ build/
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+out/
 
 # Generated files
 .idea/**/contentModel.xml
@@ -33,10 +42,3 @@ build/
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
-
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
-
-# IntelliJ
-out/
