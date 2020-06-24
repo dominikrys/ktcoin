@@ -2,4 +2,6 @@
 
 [![Build Status](https://travis-ci.com/dominikrys/ktcoin.svg?token=9AstUw2ztRiVk1C3ZPsd&branch=master)](https://travis-ci.com/dominikrys/ktcoin)
 
-Blockchain in Kotlin.
+Blockchain implementation in Kotlin.
+
+The goal of this project was to learn about blockchain internals and pick up some Kotlin in the process.
