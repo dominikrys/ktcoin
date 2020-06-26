@@ -18,6 +18,8 @@ data class Block(
     fun addTransaction(transaction: Transaction): Block {
         if (transaction.isSignatureValid()) {
             transactions.add(transaction)
+        } else {
+            throw IllegalArgumentException("Transaction ${transaction.hash} does not have a valid signature")
         }
 
         return this
