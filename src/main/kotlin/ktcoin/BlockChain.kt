@@ -3,7 +3,6 @@ package ktcoin
 class BlockChain {
     private var blocks: MutableList<Block> = mutableListOf()
     private val difficulty = 2
-    private val validPrefix = "0".repeat(difficulty)
     var utxo: MutableMap<String, TransactionOutput> = mutableMapOf()
 
     fun add(block: Block): Block {
@@ -12,7 +11,10 @@ class BlockChain {
         return minedBlock
     }
 
-    private fun isMined(block: Block): Boolean = block.hash.startsWith(validPrefix)
+    private fun isMined(block: Block): Boolean {
+        val validPrefix = "0".repeat(difficulty)
+        return block.hash.startsWith(validPrefix)
+    }
 
     private fun mine(block: Block): Block {
         println("Mining: $block")
