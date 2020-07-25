@@ -6,14 +6,22 @@ Blockchain implementation in Kotlin featuring wallets and transactions.
 
 The goal of this small project was to learn about blockchain internals and pick up some Kotlin in the process.
 
-## Pre-Requisites
+## Pre-requisites
 
 - JDK 11
+
+- *Alternatively:* Docker
 
 ## How to Run
 
 ```shell
 $ ./gradlew run
+```
+
+Alternatively, using Docker:
+
+```shell
+$ docker build .
 ```
 
 ## Explanation
