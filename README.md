@@ -12,19 +12,19 @@ The goal of this small project was to learn about blockchain internals and pick 
 
 - *Alternatively:* Docker
 
-## How to Run
+## How to run
 
 ```shell
 $ ./gradlew run
 ```
 
-Alternatively, using Docker:
+*Alternatively, using Docker:*
 
 ```shell
 $ docker build .
 ```
 
-## Explanation
+## Overview
 
 When [`Main.kt`](./src/main/kotlin/Main.kt) is ran:
 
