@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/dominikrys/ktcoin/master?style=flat-square)](https://travis-ci.com/dominikrys/ktcoin)
 
-Blockchain implementation in Kotlin featuring wallets and transactions.
+Blockchain implementation in Kotlin featuring wallets, transactions and a rudimentary proof-of-work algorithm.
 
 The goal of this small project was to learn about blockchain internals and pick up some Kotlin in the process.
 
