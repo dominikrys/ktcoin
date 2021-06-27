@@ -2,7 +2,7 @@ package ktcoin
 
 class BlockChain {
     private var blocks: MutableList<Block> = mutableListOf()
-    private val difficulty = 2
+    private val difficulty = 4
     var utxo: MutableMap<String, TransactionOutput> = mutableMapOf()
 
     fun add(block: Block): Block {
